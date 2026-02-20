@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerem Kaplan | Cloud Engineer - Azure & DevOps Specialist</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <svg class="logo-icon" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cloud shape background -->
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#0078d4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#106ebe;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff8c00;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ff6600;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Outer hexagon frame (infrastructure / cloud node) -->
+                    <polygon points="26,2 48,14 48,38 26,50 4,38 4,14" fill="none" stroke="url(#logoGrad)" stroke-width="2.2" opacity="0.9"/>
+                    <!-- Inner glow line -->
+                    <polygon points="26,7 44,17 44,35 26,45 8,35 8,17" fill="rgba(0,120,212,0.08)" stroke="url(#logoGrad)" stroke-width="0.5" opacity="0.4"/>
+                    <!-- K letter - left -->
+                    <g fill="none" stroke="#e4e4e7" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="14" y1="16" x2="14" y2="36"/>
+                        <line x1="14" y1="26" x2="23" y2="16"/>
+                        <line x1="14" y1="26" x2="23" y2="36"/>
+                    </g>
+                    <!-- K letter - right -->
+                    <g fill="none" stroke="url(#accentGrad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="29" y1="16" x2="29" y2="36"/>
+                        <line x1="29" y1="26" x2="38" y2="16"/>
+                        <line x1="29" y1="26" x2="38" y2="36"/>
+                    </g>
+                    <!-- Small cloud accent top-right -->
+                    <circle cx="42" cy="10" r="2" fill="url(#logoGrad)" opacity="0.6"/>
+                    <circle cx="38" cy="8" r="1.5" fill="url(#logoGrad)" opacity="0.4"/>
+                </svg>
+                <span class="logo-text">KeremKaplan</span>
+                <span class="logo-bracket">.cloud</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="hero-greeting"><span class="azure-blue">resource</span> <span class="azure-orange">main</span> {</p>
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Kerem Kaplan</span></h1>
+                <h2 class="hero-subtitle">Cloud Engineer</h2>
+                <p class="hero-description">
+                    Building reliable, secure, and scalable cloud environments. 
+                    Specialized in Azure, DevOps practices, and data platform infrastructure.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#experience" class="btn btn-primary">View My Experience</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://www.linkedin.com/in/keremkaplan" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:kaplannkerem@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="code-window">
+                    <div class="code-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="filename">cloud-engineer.tf</span>
+                    </div>
+                    <pre class="code-content"><code><span class="keyword">locals</span> {
+  <span class="property">location</span> = <span class="string">"Turkey"</span>
+  <span class="property">engineer</span> = {
+    <span class="property">name</span>    = <span class="string">"Kerem Kaplan"</span>
+    <span class="property">role</span>    = <span class="string">"Cloud Engineer"</span>
+    <span class="property">company</span> = <span class="string">"WeDo Technology"</span>
+    <span class="property">focus</span>   = [<span class="string">"Azure"</span>, <span class="string">"DevOps"</span>, <span class="string">"IaC"</span>]
+  }
+}
+
+<span class="keyword">output</span> <span class="string">"profile"</span> {
+  <span class="property">value</span> = <span class="string">"${local.engineer.name} - Cloud &amp; DevOps"</span>
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title terraform-style"><span class="tf-keyword">resource</span> <span class="tf-string">"about_me"</span> {</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a <strong>Cloud Engineer</strong> specializing in <strong>Azure</strong>, working with 
+                        large-scale enterprises to build reliable, secure, and scalable cloud environments.
+                    </p>
+                    <p>
+                        I specialize in <strong>DevOps</strong>, <strong>CI/CD</strong>, and 
+                        <strong>Infrastructure as Code (Terraform)</strong>, with hands-on experience in 
+                        <strong>Kubernetes</strong>, <strong>Docker</strong>, and building 
+                        <strong>Enterprise Scale Landing Zones (ESLZ)</strong>.
+                    </p>
+                    <p>
+                        My expertise spans cloud architecture, migration, security, governance, and cost optimization. 
+                        I work with monitoring tools like <strong>Prometheus</strong> and <strong>Grafana</strong>, 
+                        and security tools like <strong>SonarQube</strong>. I also leverage <strong>AI tools</strong> 
+                        to enhance productivity and streamline workflows. I follow <strong>Agile/Scrum</strong> 
+                        methodologies and manage partnerships with major cloud providers.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">2+</span>
+                            <span class="stat-label">Years Cloud Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">7</span>
+                            <span class="stat-label">Certifications</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Languages</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-frame">
+                        <div class="placeholder-avatar">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title terraform-style"><span class="tf-keyword">module</span> <span class="tf-string">"skills"</span> {</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="category-title terraform-style">
+                        <span class="tf-keyword">cloud_platforms</span> = {
+                    </h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-microsoft"></i><span>Microsoft Azure</span></li>
+                        <li><i class="fas fa-layer-group"></i><span>Enterprise Scale Landing Zones</span></li>
+                        <li><i class="fas fa-database"></i><span>Azure Data Services</span></li>
+                        <li><i class="fas fa-code-branch"></i><span>Azure DevOps</span></li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="category-title terraform-style">
+                        <span class="tf-keyword">devops_automation</span> = {
+                    </h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-cube"></i><span>Terraform (IaC)</span></li>
+                        <li><i class="fas fa-sync-alt"></i><span>CI/CD Pipelines</span></li>
+                        <li><i class="fas fa-dharmachakra"></i><span>Kubernetes & Docker</span></li>
+                        <li><i class="fab fa-git-alt"></i><span>Git & GitHub</span></li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="category-title terraform-style">
+                        <span class="tf-keyword">monitoring_security</span> = {
+                    </h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-chart-area"></i><span>Prometheus & Grafana</span></li>
+                        <li><i class="fas fa-shield-alt"></i><span>SonarQube</span></li>
+                        <li><i class="fas fa-lock"></i><span>Cloud Security & Governance</span></li>
+                        <li><i class="fas fa-user-shield"></i><span>Identity & Access Management</span></li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="category-title terraform-style">
+                        <span class="tf-keyword">operations</span> = {
+                    </h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-tasks"></i><span>Agile & Scrum</span></li>
+                        <li><i class="fab fa-linux"></i><span>Linux & Windows</span></li>
+                        <li><i class="fab fa-jira"></i><span>Jira & Documentation</span></li>
+                        <li><i class="fas fa-robot"></i><span>AI Tools & Productivity</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title terraform-style"><span class="tf-keyword">output</span> <span class="tf-string">"certifications"</span> {</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon microsoft">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3>SC-300</h3>
+                    <p>Identity and Access Administrator Associate</p>
+                    <a href="https://learn.microsoft.com/en-us/users/keremkaplan-7826/credentials/76294f4365ba5eb9" target="_blank" class="cert-link">View Credential</a>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon microsoft">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3>DP-600</h3>
+                    <p>Fabric Analytics Engineer Associate</p>
+                    <a href="https://learn.microsoft.com/en-us/users/keremkaplan-7826/credentials/f4ad42cc25fc0dcd" target="_blank" class="cert-link">View Credential</a>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon aws">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h3>AWS Certified</h3>
+                    <p>Cloud Practitioner</p>
+                    <a href="https://www.credly.com/badges/4037ff89-6066-493f-a66c-a16ba57dc66d/linked_in_profile" target="_blank" class="cert-link">View Credential</a>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon aws">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h3>AWS Partner</h3>
+                    <p>Well-Architected Best Practices (Technical)</p>
+                    <span class="cert-date">Issued Feb 2024</span>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon aws">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h3>AWS Partner</h3>
+                    <p>Security Best Practices (Technical)</p>
+                    <span class="cert-date">Issued Feb 2024</span>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon aws">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h3>AWS Partner</h3>
+                    <p>Migrating to AWS (Business)</p>
+                    <span class="cert-date">Issued Feb 2024</span>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon aws">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h3>AWS Partner</h3>
+                    <p>Accreditation (Technical)</p>
+                    <span class="cert-date">Issued Dec 2023</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title terraform-style"><span class="tf-keyword">resource</span> <span class="tf-string">"experience"</span> {</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Cloud Engineer</h3>
+                            <span class="timeline-date">Sep 2023 - Present</span>
+                        </div>
+                        <h4>WeDo Technology</h4>
+                        <ul>
+                            <li>Working with large-scale enterprises on cloud architecture, migration, and modernization</li>
+                            <li>Building Enterprise Scale Landing Zones (ESLZ) and implementing Infrastructure as Code with Terraform</li>
+                            <li>Designing CI/CD pipelines, managing Kubernetes clusters, and containerizing workloads with Docker</li>
+                            <li>Implementing monitoring solutions with Prometheus, Grafana, and security scanning with SonarQube</li>
+                            <li>Managing cloud governance, cost optimization, and CSP partnership processes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Cloud Services Assistant Specialist</h3>
+                            <span class="timeline-date">Oct 2023 - Dec 2023</span>
+                        </div>
+                        <h4>Borusan Lojistik <span class="via-company">(via WeDo Technology)</span></h4>
+                        <ul>
+                            <li>Provided cloud services support for logistics operations</li>
+                            <li>Assisted in cloud infrastructure management</li>
+                            <li>Supported DevOps initiatives and cloud migrations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>IT System Operations Intern</h3>
+                            <span class="timeline-date">Feb 2019 - Oct 2019</span>
+                        </div>
+                        <h4>Borusan Danışmanlık</h4>
+                        <ul>
+                            <li>Gained hands-on experience in IT system operations</li>
+                            <li>Supported infrastructure and system administration tasks</li>
+                            <li>Developed foundational skills in enterprise IT environments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title terraform-style"><span class="tf-keyword">resource</span> <span class="tf-string">"education"</span> {</h2>
+            <div class="education-card">
+                <div class="education-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="education-content">
+                    <h3>Yeditepe Üniversitesi</h3>
+                    <p class="degree">Bachelor's Degree, Computer Engineering</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Istanbul, Türkiye</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Spacer for visual separation -->
+    <div class="section-spacer"></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title terraform-style"><span class="tf-keyword">locals</span> <span class="tf-string">"contact"</span> {</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>
+                        I'm always open to discussing cloud architecture, DevOps practices, 
+                        and new opportunities in the cloud engineering space. Feel free to reach out!
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>kaplannkerem@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+90 535 860 48 33</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Istanbul, Türkiye</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span>linkedin.com/in/keremkaplan</span>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://www.linkedin.com/in/keremkaplan" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:kaplannkerem@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required placeholder="What's this about?">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg class="logo-icon" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0078d4;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#106ebe;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="footerAccentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff8c00;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ff6600;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <polygon points="26,2 48,14 48,38 26,50 4,38 4,14" fill="none" stroke="url(#footerLogoGrad)" stroke-width="2.2" opacity="0.9"/>
+                        <polygon points="26,7 44,17 44,35 26,45 8,35 8,17" fill="rgba(0,120,212,0.08)" stroke="url(#footerLogoGrad)" stroke-width="0.5" opacity="0.4"/>
+                        <g fill="none" stroke="#e4e4e7" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="14" y1="16" x2="14" y2="36"/>
+                            <line x1="14" y1="26" x2="23" y2="16"/>
+                            <line x1="14" y1="26" x2="23" y2="36"/>
+                        </g>
+                        <g fill="none" stroke="url(#footerAccentGrad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="29" y1="16" x2="29" y2="36"/>
+                            <line x1="29" y1="26" x2="38" y2="16"/>
+                            <line x1="29" y1="26" x2="38" y2="36"/>
+                        </g>
+                        <circle cx="42" cy="10" r="2" fill="url(#footerLogoGrad)" opacity="0.6"/>
+                        <circle cx="38" cy="8" r="1.5" fill="url(#footerLogoGrad)" opacity="0.4"/>
+                    </svg>
+                    <span class="logo-text">KeremKaplan</span>
+                    <span class="logo-bracket">.cloud</span>
+                </div>
+                <div class="footer-cert-links">
+                    <a href="https://learn.microsoft.com/en-us/users/keremkaplan-7826/credentials/76294f4365ba5eb9" target="_blank" title="SC-300 Identity and Access Administrator Associate">
+                        <i class="fab fa-microsoft"></i> SC-300
+                    </a>
+                    <a href="https://learn.microsoft.com/en-us/users/keremkaplan-7826/credentials/f4ad42cc25fc0dcd" target="_blank" title="DP-600 Fabric Analytics Engineer Associate">
+                        <i class="fab fa-microsoft"></i> DP-600
+                    </a>
+                    <a href="https://www.credly.com/badges/4037ff89-6066-493f-a66c-a16ba57dc66d/linked_in_profile" target="_blank" title="AWS Certified Cloud Practitioner">
+                        <i class="fab fa-aws"></i> AWS Cloud Practitioner
+                    </a>
+                </div>
+                <p class="footer-text">
+                    Built with <i class="fas fa-heart"></i> and Azure
+                </p>
+                <p class="footer-copyright">
+                    &copy; 2024 Kerem Kaplan. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

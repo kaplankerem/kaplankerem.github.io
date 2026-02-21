@@ -148,20 +148,44 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     display: flex;
     align-items: center;
+    gap: 8px;
 }
 
 .logo-icon {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     flex-shrink: 0;
     transition: all var(--transition-normal);
-    filter: drop-shadow(0 0 6px rgba(0, 120, 212, 0.3));
+    filter: drop-shadow(0 0 8px rgba(0, 120, 212, 0.35));
 }
 
 .nav-logo:hover .logo-icon,
 .footer-logo:hover .logo-icon {
-    filter: drop-shadow(0 0 12px rgba(0, 120, 212, 0.5));
-    transform: scale(1.08);
+    filter: drop-shadow(0 0 16px rgba(0, 120, 212, 0.6)) drop-shadow(0 0 30px rgba(255, 140, 0, 0.2));
+    transform: scale(1.12);
+}
+
+/* Logo floating particles animation */
+@keyframes logoParticleFloat {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(-2px); opacity: 1; }
+}
+
+@keyframes logoParticlePulse {
+    0%, 100% { r: 1.2; opacity: 0.6; }
+    50% { r: 1.8; opacity: 0.9; }
+}
+
+.logo-particle {
+    animation: logoParticleFloat 3s ease-in-out infinite;
+}
+
+.logo-particle:nth-child(2) {
+    animation-delay: -1s;
+}
+
+.logo-particle:nth-child(3) {
+    animation-delay: -2s;
 }
 
 .logo-bracket {
@@ -475,7 +499,7 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
 }
 
 .about-text p {
@@ -518,6 +542,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-image {
     display: flex;
     justify-content: center;
+    padding-top: 0.5rem;
 }
 
 .image-frame {
@@ -532,10 +557,10 @@ h1, h2, h3, h4, h5, h6 {
 .image-frame::before {
     content: '';
     position: absolute;
-    inset: -20px;
-    border: 2px dashed var(--border-color);
-    border-radius: var(--radius-xl);
-    opacity: 0.5;
+    inset: -12px;
+    border: 1.5px dashed var(--border-color);
+    border-radius: calc(var(--radius-xl) + 4px);
+    opacity: 0.4;
 }
 
 .placeholder-avatar {
@@ -546,6 +571,12 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.avatar-monogram {
+    width: 85%;
+    height: 85%;
 }
 
 .placeholder-avatar i {
@@ -941,12 +972,18 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--azure-blue);
 }
 
+.via-company {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
 /* ==========================================
    Education Section
    ========================================== */
 .education {
     padding: var(--section-padding);
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
 }
 
 .education-card {
@@ -1014,7 +1051,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-spacer {
     height: 60px;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
 }
 
 /* ==========================================

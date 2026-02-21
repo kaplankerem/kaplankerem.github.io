@@ -1,0 +1,24 @@
+# AI Model Directories
+.claude/
+.kilo/
+.glm/
+.cursor/
+.aider/
+.copilot/
+.openai/
+.anthropic/
+
+# AI Model Settings/Config
+.claude*
+.kilo*
+.glm*
+.cursor*
+.aider*
+.copilot*
+.openai*
+.anthropic*
+
+# AI Chat History
+.claude_history
+.kilo_history
+.glm_history

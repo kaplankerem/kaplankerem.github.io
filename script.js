@@ -13,6 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypingEffect();
 });
 
+const CONTACT_RATE_LIMIT_CONFIG = {
+    storageKey: 'kk_contact_rate_limit_v1',
+    cooldownMs: 45 * 1000,
+    windowMs: 10 * 60 * 1000,
+    maxSubmissionsInWindow: 3
+};
+
+let contactRateLimitTimer = null;
+
 /**
  * Mobile Navigation Toggle
  */
@@ -155,21 +164,39 @@ function initScrollAnimations() {
  */
 function initContactForm() {
     const form = document.getElementById('contactForm');
+    const formEndpoint = 'https://formsubmit.co/ajax/kaplannkerem@gmail.com';
     
     if (form) {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (!submitBtn.dataset.originalText) {
+            submitBtn.dataset.originalText = submitBtn.innerHTML;
+        }
+
+        const initialStatus = getContactRateLimitStatus();
+        if (initialStatus.blocked) {
+            applyRateLimitButtonState(submitBtn, initialStatus.retryMs);
+        }
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
+
+            const rateLimitStatus = getContactRateLimitStatus();
+            if (rateLimitStatus.blocked) {
+                const waitSeconds = Math.ceil(rateLimitStatus.retryMs / 1000);
+                showNotification(`Please wait ${waitSeconds}s before sending again.`, 'error');
+                applyRateLimitButtonState(submitBtn, rateLimitStatus.retryMs);
+                return;
+            }
+
+            const originalText = submitBtn.dataset.originalText || submitBtn.innerHTML;
             
             // Show loading state
             submitBtn.innerHTML = '<span>Sending...</span> <i class="fas fa-spinner fa-spin"></i>';
             submitBtn.disabled = true;
             
-            // Simulate form submission (replace with actual API call)
             try {
-                await simulateFormSubmission();
+                await submitContactForm(form, formEndpoint);
+                recordContactFormSubmission();
                 
                 // Show success message
                 showNotification('Message sent successfully!', 'success');
@@ -177,21 +204,145 @@ function initContactForm() {
             } catch (error) {
                 // Show error message
                 showNotification('Failed to send message. Please try again.', 'error');
+                console.error('Contact form submission failed:', error);
             } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
+                const postSubmitStatus = getContactRateLimitStatus();
+                if (postSubmitStatus.blocked) {
+                    applyRateLimitButtonState(submitBtn, postSubmitStatus.retryMs);
+                } else {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
             }
         });
     }
 }
 
-/**
- * Simulate form submission (replace with actual API call)
- */
-function simulateFormSubmission() {
-    return new Promise((resolve) => {
-        setTimeout(resolve, 1500);
+function getContactRateLimitState() {
+    const raw = localStorage.getItem(CONTACT_RATE_LIMIT_CONFIG.storageKey);
+    if (!raw) {
+        return { lastSubmissionAt: 0, attempts: [] };
+    }
+
+    try {
+        const parsed = JSON.parse(raw);
+        return {
+            lastSubmissionAt: Number(parsed.lastSubmissionAt) || 0,
+            attempts: Array.isArray(parsed.attempts) ? parsed.attempts.filter((t) => Number.isFinite(Number(t))).map(Number) : []
+        };
+    } catch (error) {
+        return { lastSubmissionAt: 0, attempts: [] };
+    }
+}
+
+function setContactRateLimitState(state) {
+    localStorage.setItem(CONTACT_RATE_LIMIT_CONFIG.storageKey, JSON.stringify(state));
+}
+
+function pruneSubmissionAttempts(attempts, now) {
+    return attempts.filter((timestamp) => now - timestamp <= CONTACT_RATE_LIMIT_CONFIG.windowMs);
+}
+
+function getContactRateLimitStatus(now = Date.now()) {
+    const state = getContactRateLimitState();
+    const attempts = pruneSubmissionAttempts(state.attempts, now);
+
+    let retryMs = 0;
+
+    if (state.lastSubmissionAt > 0) {
+        const cooldownRemaining = CONTACT_RATE_LIMIT_CONFIG.cooldownMs - (now - state.lastSubmissionAt);
+        if (cooldownRemaining > retryMs) {
+            retryMs = cooldownRemaining;
+        }
+    }
+
+    if (attempts.length >= CONTACT_RATE_LIMIT_CONFIG.maxSubmissionsInWindow) {
+        const oldestAttemptInWindow = attempts[0];
+        const windowRemaining = CONTACT_RATE_LIMIT_CONFIG.windowMs - (now - oldestAttemptInWindow);
+        if (windowRemaining > retryMs) {
+            retryMs = windowRemaining;
+        }
+    }
+
+    const normalizedState = {
+        lastSubmissionAt: state.lastSubmissionAt,
+        attempts
+    };
+    setContactRateLimitState(normalizedState);
+
+    return {
+        blocked: retryMs > 0,
+        retryMs: Math.max(0, retryMs)
+    };
+}
+
+function recordContactFormSubmission(now = Date.now()) {
+    const state = getContactRateLimitState();
+    const attempts = pruneSubmissionAttempts(state.attempts, now);
+    attempts.push(now);
+
+    setContactRateLimitState({
+        lastSubmissionAt: now,
+        attempts
     });
+}
+
+function applyRateLimitButtonState(submitBtn, retryMs) {
+    if (contactRateLimitTimer) {
+        clearInterval(contactRateLimitTimer);
+        contactRateLimitTimer = null;
+    }
+
+    const originalText = submitBtn.dataset.originalText || submitBtn.innerHTML;
+    submitBtn.dataset.originalText = originalText;
+
+    const update = () => {
+        const status = getContactRateLimitStatus();
+        if (!status.blocked) {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            if (contactRateLimitTimer) {
+                clearInterval(contactRateLimitTimer);
+                contactRateLimitTimer = null;
+            }
+            return;
+        }
+
+        const secondsLeft = Math.max(1, Math.ceil(status.retryMs / 1000));
+        submitBtn.innerHTML = `<span>Wait ${secondsLeft}s</span> <i class="fas fa-clock"></i>`;
+        submitBtn.disabled = true;
+    };
+
+    if (retryMs > 0) {
+        update();
+        contactRateLimitTimer = setInterval(update, 1000);
+    }
+}
+
+/**
+ * Submit contact form data to FormSubmit
+ */
+async function submitContactForm(form, endpoint) {
+    const formData = new FormData(form);
+    const visitorEmail = formData.get('email');
+
+    if (visitorEmail) {
+        formData.set('_replyto', visitorEmail);
+    }
+
+    const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json'
+        },
+        body: formData
+    });
+
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok || result.success === false) {
+        throw new Error(result.message || 'Contact form request failed');
+    }
 }
 
 /**

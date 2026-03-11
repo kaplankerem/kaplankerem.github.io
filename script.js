@@ -85,10 +85,10 @@ function updateNavbarBackground() {
     const navbar = document.querySelector('.navbar');
     
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 10, 15, 0.98)';
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.78)';
+        navbar.style.boxShadow = '0 16px 34px rgba(26, 43, 74, 0.12)';
     } else {
-        navbar.style.background = 'rgba(10, 10, 15, 0.9)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.62)';
         navbar.style.boxShadow = 'none';
     }
 }

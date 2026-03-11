@@ -412,9 +412,15 @@ h1, h2, h3, h4, h5, h6 {
     color: #3b4356;
 }
 
+.hero-buttons .btn-primary,
 .hero-buttons .btn-secondary {
     color: #0f2444;
     background: linear-gradient(145deg, rgba(236, 248, 255, 0.9), rgba(226, 240, 252, 0.62), rgba(255, 245, 222, 0.62));
+}
+
+.hero-buttons .btn-primary:hover,
+.hero-buttons .btn-secondary:hover {
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.56));
 }
 
 @keyframes liquidSheen {
@@ -764,6 +770,9 @@ section::before {
     text-align: center;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cert-card::before {
@@ -800,6 +809,10 @@ section::before {
     margin-bottom: 0.4rem;
 }
 
+.cert-card p {
+    margin-bottom: 0.95rem;
+}
+
 .cert-date,
 .cert-link,
 .timeline-date {
@@ -816,6 +829,7 @@ section::before {
 
 .cert-link {
     color: #075f9f;
+    margin-top: auto;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 
@@ -824,6 +838,10 @@ section::before {
     box-shadow: 0 5px 12px rgba(10, 108, 177, 0.12);
     border-color: rgba(15, 107, 176, 0.24);
     background: rgba(255, 255, 255, 0.7);
+}
+
+.cert-date {
+    margin-top: auto;
 }
 
 .timeline {

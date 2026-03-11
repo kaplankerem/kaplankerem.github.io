@@ -412,6 +412,11 @@ h1, h2, h3, h4, h5, h6 {
     color: #3b4356;
 }
 
+.hero-buttons .btn-secondary {
+    color: #0f2444;
+    background: linear-gradient(145deg, rgba(236, 248, 255, 0.9), rgba(226, 240, 252, 0.62), rgba(255, 245, 222, 0.62));
+}
+
 @keyframes liquidSheen {
     0% {
         transform: translateX(-135%) skewX(-20deg);

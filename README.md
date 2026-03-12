@@ -31,7 +31,7 @@ Building reliable, secure, and scalable cloud environments for large-scale enter
 
 | | |
 |---|---|
-| **2+** Years Cloud Experience | **7** Certifications |
+| **2+** Years Cloud Experience | **9** Certifications |
 | **3** Languages | **BSc** Computer Engineering |
 
 ## module "skills" {
@@ -54,8 +54,10 @@ Building reliable, secure, and scalable cloud environments for large-scale enter
 
 | Certification | Provider | Credential |
 |---|---|---|
+| **MS-102** Microsoft 365 Certified: Administrator Expert | Microsoft | [View](https://learn.microsoft.com/api/credentials/share/en-us/KeremKaplan-7826/F4EB4D78FCA99AB5?sharingId=27191A3840793785) |
 | **SC-300** Identity and Access Administrator Associate | Microsoft | [View](https://learn.microsoft.com/en-us/users/keremkaplan-7826/credentials/76294f4365ba5eb9) |
 | **DP-600** Fabric Analytics Engineer Associate | Microsoft | [View](https://learn.microsoft.com/en-us/users/keremkaplan-7826/credentials/f4ad42cc25fc0dcd) |
+| **GH-300** GitHub Copilot | Microsoft | [View](https://learn.microsoft.com/api/credentials/share/en-us/KeremKaplan-7826/8C6CE193F837D224?sharingId=27191A3840793785) |
 | **AWS Certified** Cloud Practitioner | AWS | [View](https://www.credly.com/badges/4037ff89-6066-493f-a66c-a16ba57dc66d/linked_in_profile) |
 | **AWS Partner** Well-Architected Best Practices | AWS | Issued Feb 2024 |
 | **AWS Partner** Security Best Practices | AWS | Issued Feb 2024 |
